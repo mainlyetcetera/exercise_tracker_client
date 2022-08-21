@@ -1,12 +1,17 @@
-import express from 'express'
-import bodyParser from 'body-parser' 
+import input from 'readline-sync'
 
-const app = express()
-const PORT = 5200
+console.log('Welcome to exercise client!')
 
-console.log('rawr')
-console.log('boo')
+enum nameResponses {
+  a = 'bicep curls'
+}
 
-app.listen(PORT, (): void => {
-  console.log(`port: ${PORT}`)
-})
+export const promptForName = (): string => {
+  const q = 'pick from following options {\na: bicep curls,\nb: someting else\n'
+  const nameResponse = input.question(q)
+  if (nameResponse && nameResponse === 'a') {
+    return nameResponses[nameResponse]
+  } else {
+    return 'incorrect option provided'
+  }
+}
