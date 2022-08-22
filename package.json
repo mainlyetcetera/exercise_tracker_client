@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage=false --watch",
-    "start:build": "tsc -w",
-    "start:run": "nodemon dist/index.js",
+    "start:run": "ts-node src/index.ts",
     "start": "concurrently npm:start:*"
   },
   "keywords": [],
@@ -25,7 +24,8 @@
     "express": "^4.18.1",
     "nodemon": "^2.0.16",
     "readline-sync": "^1.4.10",
-    "reflect-metadata": "^0.1.13"
+    "reflect-metadata": "^0.1.13",
+    "ts-node": "^10.9.1"
   },
   "devDependencies": {
     "@types/jest": "^28.1.7",
