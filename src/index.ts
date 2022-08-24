@@ -1,12 +1,55 @@
-import express from 'express'
-import bodyParser from 'body-parser' 
+#!/usr/bin/ts-node
+import input from 'readline-sync'
 
-const app = express()
-const PORT = 5200
+console.log('Welcome to exercise client!')
 
-console.log('rawr')
-console.log('boo')
+type nmResp = {
+  [key: string]: string
+}
 
-app.listen(PORT, (): void => {
-  console.log(`port: ${PORT}`)
+const nameResponses: nmResp = {
+  a: 'bicep curls',
+  c: 'chest press',
+  r: 'rear-deltoid fly',
+  l: 'lat pull-down',
+  q: 'quad press',
+  h: 'hamstring press'
+}
+
+let queryResponses = '' 
+
+Object.keys(nameResponses).forEach(resp => {
+  if (nameResponses[resp]) {
+    queryResponses += `${resp}: ${nameResponses[resp]}\n`
+  }
 })
+
+const q = `
+pick from following options:\n
+${queryResponses}
+`
+
+console.log(q)
+
+const promptForExerciseName = (): string => {
+  const nameResponse = input.question('What was the exercise? ')
+  switch (nameResponses[nameResponse]) {
+    case nameResponses.a:
+      return nameResponses.a
+    case nameResponses.c:
+      return nameResponses.c
+    case nameResponses.r:
+      return nameResponses.r
+    case nameResponses.l:
+      return nameResponses.l
+    case nameResponses.q:
+      return nameResponses.q
+    case nameResponses.h:
+      return nameResponses.h
+    default:
+      return `incorrect response given: ${nameResponses[nameResponse]}`
+  }
+}
+
+const nameResult = promptForExerciseName()
+console.log({ nameResult })
