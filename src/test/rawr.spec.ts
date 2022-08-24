@@ -1,11 +1,5 @@
-// // import commander from 'commander'
-// import { promptForExerciseName } from '../index'
+import { promptForExerciseWeight } from '../../src/index'
+import { assert } from '../lib/assertions'
 
-// describe('the client', () => {
-//   it('should determine appropriate name based on input', () => {
-//     const name = 'bicep curls'
-//     const response = promptForExerciseName()
-//     // a
-//     expect(response).toBe(name)
-//   })
-// })
+console.log(assert(promptForExerciseWeight('42'), 42, 'weight is the correct integer'))
+console.log(assert(promptForExerciseWeight('a'), 'Please enter an integer!', 'weight is not an integer'))

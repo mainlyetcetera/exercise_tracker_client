@@ -1,9 +1,10 @@
 #!/usr/bin/ts-node
 import input from 'readline-sync'
+import { assert } from '../src/lib/assertions'
 
 console.log('Welcome to exercise client!')
 
-const promptForExerciseName = (): string => {
+export const promptForExerciseName = (): string => {
   type nmResp = {
     [key: string]: string
   }
@@ -52,7 +53,7 @@ ${queryResponses}
   }
 }
 
-const promptForExerciseWeight = (weightResponse: string = input.question('What was the weight for the set? ')): number | string => {
+export const promptForExerciseWeight = (weightResponse: string = input.question('What was the weight for the set? ')): number | string => {
   console.log('This needs to be an integer!')
 
   if (parseInt(weightResponse)) {
@@ -67,12 +68,3 @@ console.log({ nameResult })
 
 const numberResult = promptForExerciseWeight()
 console.log({ numberResult })
-
-type testParams = string | number | boolean
-
-const assert = (actual: testParams, expected: testParams, testName: string): boolean => {
-  console.log(`${testName} should be ${actual}, and got ${expected}`)
-  return actual === expected ? true : false
-}
-
-console.log(assert(promptForExerciseWeight('42'), 42, 'weight is the correct integer'))

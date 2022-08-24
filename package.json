@@ -4,7 +4,7 @@
   "description": "cli tool serving as client for personal exercise tracking",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage=false --watch",
+    "test": "ts-node src/test/rawr.spec.ts",
     "start:run": "ts-node src/index.ts",
     "start": "concurrently npm:start:*"
   },
