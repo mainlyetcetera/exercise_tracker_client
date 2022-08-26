@@ -6,9 +6,8 @@
   "scripts": {
     "test:name": "ts-node src/test/name.spec.ts",
     "test:weight": "ts-node src/test/weight.spec.ts",
-    "test": "concurrently npm:test:*",
-    "start:run": "ts-node src/index.ts",
-    "start": "concurrently npm:start:*"
+    "test": "npm run test:name && npm run test:weight",
+    "start": "ts-node src/index.ts"
   },
   "keywords": [],
   "author": "",
