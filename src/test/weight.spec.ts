@@ -1,26 +1,31 @@
-import input from 'readline-sync'
+import { input } from '../input'
 import { promptForExerciseWeight } from '../lib/prompts/weight'
 import { assertEqual } from '../lib/assertions'
 import { promptAndResponse } from '../lib/types/types'
 
-const prompt: promptAndResponse = {
+const correctPrompt: promptAndResponse = {
   question: 'What was the weight? ',
   useInput: input.question,
+  testInput: '42'
 }
 
-console.log('expecting 42')
+const incorrectPrompt: promptAndResponse = {
+  question: 'What was the weight? ',
+  useInput: input.question,
+  testInput: 'a'
+}
+
 console.log(
   assertEqual(
-    promptForExerciseWeight(prompt),
+    promptForExerciseWeight(correctPrompt),
     42,
     'weight is the correct integer'
   )
 )
 
-console.log('expecting a')
 console.log(
   assertEqual(
-    promptForExerciseWeight(prompt),
+    promptForExerciseWeight(incorrectPrompt),
     'Please enter an integer!',
     'weight is not an integer'
   )

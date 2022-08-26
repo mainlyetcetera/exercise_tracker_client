@@ -14,7 +14,7 @@ const nameResponses: nmResp = {
 }
 
 export const promptForExerciseName = ({
-  question, useInput
+  question, useInput, testInput
 }: promptAndResponse): string => {
 
   let queryResponses = ''
@@ -32,7 +32,9 @@ ${queryResponses}
 
   console.log(q)
 
-  const nameResponse = useInput(question)
+  const nameResponse = testInput
+    ? testInput
+    : useInput(question)
 
   switch (nameResponses[nameResponse]) {
     case nameResponses.a:

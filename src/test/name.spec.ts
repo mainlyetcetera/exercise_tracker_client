@@ -1,25 +1,30 @@
-import input from 'readline-sync'
+import { input } from '../input'
 import { promptForExerciseName } from '../lib/prompts/name'
 import { assertEqual } from '../lib/assertions'
 import { promptAndResponse } from '../lib/types/types'
 
-const prompt: promptAndResponse = {
+const correctPrompt: promptAndResponse = {
   question: 'What was the exercise? ',
-  useInput: input.question
+  useInput: input.question,
+  testInput: 'a'
 }
 
-console.log("expecting 'a'")
+const inCorrectPrompt: promptAndResponse = {
+  question: 'What was the exercise? ',
+  useInput: input.question,
+  testInput: '42'
+}
+
 console.log(
   assertEqual(
-    promptForExerciseName(prompt),
+    promptForExerciseName(correctPrompt),
     'bicep curls',
     'name should recognize correct prompt for name'
   )
 )
-console.log("expecting '42'")
 console.log(
   assertEqual(
-    promptForExerciseName(prompt),
+    promptForExerciseName(inCorrectPrompt),
     'incorrect response given!',
     'name should error on incorrect prompt for name'
   )

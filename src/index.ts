@@ -1,5 +1,5 @@
 #!/usr/bin/ts-node
-import input from 'readline-sync'
+import { input } from './input'
 import { promptForExerciseName } from './lib/prompts/name'
 import { promptForExerciseWeight } from './lib/prompts/weight'
 import { promptAndResponse } from './lib/types/types'
