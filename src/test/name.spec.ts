@@ -9,7 +9,7 @@ const correctPrompt: promptAndResponse = {
   testInput: 'a'
 }
 
-const inCorrectPrompt: promptAndResponse = {
+const incorrectPrompt: promptAndResponse = {
   question: 'What was the exercise? ',
   useInput: input.question,
   testInput: '42'
@@ -19,12 +19,12 @@ console.log(
   assertEqual(
     promptForExerciseName(correctPrompt),
     'bicep curls',
-    'name should recognize correct prompt for name'
+    'name should handle correct prompt for name'
   )
 )
 console.log(
   assertEqual(
-    promptForExerciseName(inCorrectPrompt),
+    promptForExerciseName(incorrectPrompt),
     'incorrect response given!',
     'name should error on incorrect prompt for name'
   )
