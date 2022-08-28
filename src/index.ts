@@ -1,6 +1,7 @@
 #!/usr/bin/ts-node
 import { input } from './input'
 import { promptForExerciseName } from './lib/prompts/name'
+import { promptForExerciseReps } from './lib/prompts/reps'
 import { promptForExerciseSet } from './lib/prompts/set'
 import { promptForExerciseWeight } from './lib/prompts/weight'
 import { promptAndResponse } from './lib/types/types'
@@ -22,6 +23,11 @@ const setPrompt: promptAndResponse = {
   useInput: input.question
 }
 
+const repsPrompt: promptAndResponse = {
+  question: 'What was the reps? ',
+  useInput: input.question
+}
+
 const nameResult = promptForExerciseName(namePrompt)
 console.log({ nameResult })
 
@@ -30,3 +36,6 @@ console.log({ numberResult })
 
 const setResult = promptForExerciseSet(setPrompt)
 console.log({ setResult })
+
+const repsResult = promptForExerciseReps(repsPrompt)
+console.log({ repsResult })
