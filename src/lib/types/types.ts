@@ -5,3 +5,7 @@ export type promptAndResponse = {
   useInput: typeof input.question,
   testInput?: string
 }
+
+export type termResp = {
+  [key: string]: string
+}
