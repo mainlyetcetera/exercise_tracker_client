@@ -7,7 +7,8 @@
     "test:name": "ts-node src/test/name.spec.ts",
     "test:weight": "ts-node src/test/weight.spec.ts",
     "test:set": "ts-node src/test/set.spec.ts",
-    "test": "npm run test:name && npm run test:weight && npm run test:set",
+    "test:date": "ts-node src/test/date.spec.ts",
+    "test": "npm run test:name && npm run test:weight && npm run test:set && npm run test:date",
     "start": "ts-node src/index.ts"
   },
   "keywords": [],
