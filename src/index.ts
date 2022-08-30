@@ -25,7 +25,7 @@ const setPrompt: promptAndResponse = {
 }
 
 const datePrompt: promptAndResponse = {
-  question: '',
+  question: 'What was the date? ',
   useInput: input.question
 }
 
