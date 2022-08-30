@@ -1,10 +1,6 @@
-import { promptAndResponse } from '../types/types'
+import { promptAndResponse, termResp } from '../types/types'
 
-type nmResp = {
-  [key: string]: string
-}
-
-const nameResponses: nmResp = {
+const nameResponses: termResp = {
   a: 'bicep curls',
   c: 'chest press',
   r: 'rear-deltoid fly',
