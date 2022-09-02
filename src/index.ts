@@ -6,6 +6,7 @@ import { promptForExerciseSet } from './lib/prompts/set'
 import { promptForExerciseWeight } from './lib/prompts/weight'
 import { promptForExerciseDate } from './lib/prompts/date'
 import { promptAndResponse } from './lib/types/types'
+import fetch from 'node-fetch'
 
 console.log('Welcome to exercise client!')
 
@@ -35,8 +36,39 @@ console.log({ dateResult })
 const nameResult = promptForExerciseName(namePrompt)
 console.log({ nameResult })
 
-const numberResult = promptForExerciseWeight(weightPrompt)
-console.log({ numberResult })
-
 const setResult = promptForExerciseSet(setPrompt)
 console.log({ setResult })
+
+const weightResult = promptForExerciseWeight(weightPrompt)
+console.log({ weightResult })
+
+type bodyProp = {
+  [key: string]: string | number
+}
+
+const requestBody: bodyProp = {
+  date: dateResult,
+  name: nameResult,
+  set: setResult,
+  weight: weightResult,
+}
+
+const sendExerciseData = async (url: string, data: string): Promise<Response> => {
+  const resp = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: data
+  })
+
+  return resp.json()
+}
+
+const url = 'http://localhost:5000/exercise'
+
+const blah = (async () => {
+  const result = await sendExerciseData(url, JSON.stringify(requestBody))
+  console.log(result)
+  return result
+})()
