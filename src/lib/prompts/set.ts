@@ -1,10 +1,10 @@
 import { promptAndResponse, termResp } from '../types/types'
 
-const setResponses: termResp = {
-  1: '1',
-  2: '2',
-  3: '3',
-  4: '4',
+const setResponses: { [key: string]: number } = {
+  1: 1,
+  2: 2,
+  3: 3,
+  4: 4,
 }
 
 export const promptForExerciseSet = ({

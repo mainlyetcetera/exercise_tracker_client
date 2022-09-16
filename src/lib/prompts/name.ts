@@ -9,9 +9,14 @@ const nameResponses: termResp = {
   h: 'hamstring press',
 }
 
+type nameResponse = {
+  id: string;
+  name: string;
+}
+
 export const promptForExerciseName = ({
   question, useInput, testInput
-}: promptAndResponse): string => {
+}: promptAndResponse): nameResponse => {
 
   let queryResponses = ''
 
@@ -32,20 +37,42 @@ ${queryResponses}
     ? testInput
     : useInput(question)
 
+  const successfulResponse: nameResponse = {
+    id: '',
+    name: ''
+  };
+
+  const unSuccessfulResponse: nameResponse = {
+    id: '',
+    name: 'incorrect response given!'
+  };
+
   switch (nameResponses[nameResponse]) {
     case nameResponses.a:
-      return nameResponses.a
+      successfulResponse.id = 'a';
+      successfulResponse.name = nameResponses[nameResponse];
+      return successfulResponse;
     case nameResponses.c:
-      return nameResponses.c
+      successfulResponse.id = 'c';
+      successfulResponse.name = nameResponses[nameResponse];
+      return successfulResponse;
     case nameResponses.r:
-      return nameResponses.r
+      successfulResponse.id = 'r';
+      successfulResponse.name = nameResponses[nameResponse];
+      return successfulResponse;
     case nameResponses.l:
-      return nameResponses.l
+      successfulResponse.id = 'l';
+      successfulResponse.name = nameResponses[nameResponse];
+      return successfulResponse;
     case nameResponses.q:
-      return nameResponses.q
+      successfulResponse.id = 'q';
+      successfulResponse.name = nameResponses[nameResponse];
+      return successfulResponse;
     case nameResponses.h:
-      return nameResponses.h
+      successfulResponse.id = 'h';
+      successfulResponse.name = nameResponses[nameResponse];
+      return successfulResponse;
     default:
-      return 'incorrect response given!'
+      return unSuccessfulResponse;
   }
 }
