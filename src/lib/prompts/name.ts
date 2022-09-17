@@ -1,17 +1,15 @@
-import { promptAndResponse, termResp } from '../types/types'
+import { promptAndResponse } from '../types/types'
+import { respIds } from '../types/enums/respIds'
+import { nameResponses } from '../consts/nameResponse'
 
-const nameResponses: termResp = {
-  a: 'bicep curls',
-  c: 'chest press',
-  r: 'rear-deltoid fly',
-  l: 'lat pull-down',
-  q: 'quad press',
-  h: 'hamstring press',
+type nameResponse = {
+  id: string;
+  name: string;
 }
 
 export const promptForExerciseName = ({
   question, useInput, testInput
-}: promptAndResponse): string => {
+}: promptAndResponse): nameResponse => {
 
   let queryResponses = ''
 
@@ -21,31 +19,43 @@ export const promptForExerciseName = ({
     }
   })
 
-  const q = `
-pick from following options:\n
-${queryResponses}
-`
-
-  console.log(q)
+  console.log(`pick from following options:\n${queryResponses}`);
 
   const nameResponse = testInput
     ? testInput
     : useInput(question)
 
+  const r: nameResponse = {
+    id: '',
+    name: 'incorrect response given!'
+  }
+
   switch (nameResponses[nameResponse]) {
     case nameResponses.a:
-      return nameResponses.a
+      r.id = respIds.a;
+      r.name = nameResponses[nameResponse];
+      return r;
     case nameResponses.c:
-      return nameResponses.c
+      r.id = respIds.c;
+      r.name = nameResponses[nameResponse];
+      return r;
     case nameResponses.r:
-      return nameResponses.r
+      r.id = respIds.r;
+      r.name = nameResponses[nameResponse];
+      return r;
     case nameResponses.l:
-      return nameResponses.l
+      r.id = respIds.l;
+      r.name = nameResponses[nameResponse];
+      return r;
     case nameResponses.q:
-      return nameResponses.q
+      r.id = respIds.q;
+      r.name = nameResponses[nameResponse];
+      return r;
     case nameResponses.h:
-      return nameResponses.h
+      r.id = respIds.h;
+      r.name = nameResponses[nameResponse];
+      return r;
     default:
-      return 'incorrect response given!'
+      return r;
   }
 }

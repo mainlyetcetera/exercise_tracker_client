@@ -4,9 +4,14 @@ import { input } from './input'
 import { promptForExerciseName } from './lib/prompts/name'
 import { promptForExerciseSet } from './lib/prompts/set'
 import { promptForExerciseWeight } from './lib/prompts/weight'
+import { promptForExerciseReps } from './lib/prompts/reps'
 import { promptForExerciseDate } from './lib/prompts/date'
 import { promptAndResponse } from './lib/types/types'
 import fetch from 'node-fetch'
+
+type bodyProp = {
+  [key: string]: string | number
+}
 
 console.log('Welcome to exercise client!')
 
@@ -17,6 +22,11 @@ const namePrompt: promptAndResponse = {
 
 const weightPrompt: promptAndResponse = {
   question: 'What was the weight? ',
+  useInput: input.question
+}
+
+const repsPrompt: promptAndResponse = {
+  question: 'What was the reps? ',
   useInput: input.question
 }
 
@@ -42,14 +52,15 @@ console.log({ setResult })
 const weightResult = promptForExerciseWeight(weightPrompt)
 console.log({ weightResult })
 
-type bodyProp = {
-  [key: string]: string | number
-}
+const repsResult = promptForExerciseReps(repsPrompt)
+console.log({ repsResult })
 
 const requestBody: bodyProp = {
   date: dateResult,
-  name: nameResult,
+  name: nameResult.name,
+  exercise_id: nameResult.id,
   set: setResult,
+  reps: repsResult,
   weight: weightResult,
 }
 
