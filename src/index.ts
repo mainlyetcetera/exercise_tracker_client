@@ -9,6 +9,10 @@ import { promptForExerciseDate } from './lib/prompts/date'
 import { promptAndResponse } from './lib/types/types'
 import fetch from 'node-fetch'
 
+type bodyProp = {
+  [key: string]: string | number
+}
+
 console.log('Welcome to exercise client!')
 
 const namePrompt: promptAndResponse = {
@@ -50,10 +54,6 @@ console.log({ weightResult })
 
 const repsResult = promptForExerciseReps(repsPrompt)
 console.log({ repsResult })
-
-type bodyProp = {
-  [key: string]: string | number
-}
 
 const requestBody: bodyProp = {
   date: dateResult,

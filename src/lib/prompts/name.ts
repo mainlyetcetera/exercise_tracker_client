@@ -1,13 +1,6 @@
-import { promptAndResponse, termResp } from '../types/types'
-
-const nameResponses: termResp = {
-  a: 'bicep curls',
-  c: 'chest press',
-  r: 'rear-deltoid fly',
-  l: 'lat pull-down',
-  q: 'quad press',
-  h: 'hamstring press',
-}
+import { promptAndResponse } from '../types/types'
+import { respIds } from '../types/enums/respIds'
+import { nameResponses } from '../consts/nameResponse'
 
 type nameResponse = {
   id: string;
@@ -26,53 +19,43 @@ export const promptForExerciseName = ({
     }
   })
 
-  const q = `
-pick from following options:\n
-${queryResponses}
-`
-
-  console.log(q)
+  console.log(`pick from following options:\n${queryResponses}`);
 
   const nameResponse = testInput
     ? testInput
     : useInput(question)
 
-  const successfulResponse: nameResponse = {
-    id: '',
-    name: ''
-  };
-
-  const unSuccessfulResponse: nameResponse = {
+  const r: nameResponse = {
     id: '',
     name: 'incorrect response given!'
-  };
+  }
 
   switch (nameResponses[nameResponse]) {
     case nameResponses.a:
-      successfulResponse.id = 'a';
-      successfulResponse.name = nameResponses[nameResponse];
-      return successfulResponse;
+      r.id = respIds.a;
+      r.name = nameResponses[nameResponse];
+      return r;
     case nameResponses.c:
-      successfulResponse.id = 'c';
-      successfulResponse.name = nameResponses[nameResponse];
-      return successfulResponse;
+      r.id = respIds.c;
+      r.name = nameResponses[nameResponse];
+      return r;
     case nameResponses.r:
-      successfulResponse.id = 'r';
-      successfulResponse.name = nameResponses[nameResponse];
-      return successfulResponse;
+      r.id = respIds.r;
+      r.name = nameResponses[nameResponse];
+      return r;
     case nameResponses.l:
-      successfulResponse.id = 'l';
-      successfulResponse.name = nameResponses[nameResponse];
-      return successfulResponse;
+      r.id = respIds.l;
+      r.name = nameResponses[nameResponse];
+      return r;
     case nameResponses.q:
-      successfulResponse.id = 'q';
-      successfulResponse.name = nameResponses[nameResponse];
-      return successfulResponse;
+      r.id = respIds.q;
+      r.name = nameResponses[nameResponse];
+      return r;
     case nameResponses.h:
-      successfulResponse.id = 'h';
-      successfulResponse.name = nameResponses[nameResponse];
-      return successfulResponse;
+      r.id = respIds.h;
+      r.name = nameResponses[nameResponse];
+      return r;
     default:
-      return unSuccessfulResponse;
+      return r;
   }
 }
