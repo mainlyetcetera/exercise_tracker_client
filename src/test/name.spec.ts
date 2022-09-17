@@ -17,14 +17,14 @@ const incorrectPrompt: promptAndResponse = {
 
 console.log(
   assertEqual(
-    promptForExerciseName(correctPrompt),
+    promptForExerciseName(correctPrompt).name,
     'bicep curls',
     'name should handle correct prompt for name'
   )
 )
 console.log(
   assertEqual(
-    promptForExerciseName(incorrectPrompt),
+    promptForExerciseName(incorrectPrompt).name,
     'incorrect response given!',
     'name should error on incorrect prompt for name'
   )

@@ -1,4 +1,7 @@
-type testParams = string | number | boolean
+type testParams = string | number | boolean | {
+  id: string,
+  name: string
+}
 
 export const assertEqual = (
   actual: testParams,

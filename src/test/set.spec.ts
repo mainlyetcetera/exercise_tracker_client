@@ -18,7 +18,7 @@ const incorrectPrompt: promptAndResponse = {
 console.log(
   assertEqual(
     promptForExerciseSet(correctPrompt),
-    '2',
+    2,
     'set should handle correct prompt for set'
   )
 )
